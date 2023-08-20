@@ -1,5 +1,5 @@
-<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
-  <img [src]="product.image" [alt]="product.title" class="w-1/6 mb-2" />
+<div class="product">
+  <img [src]="product.image" [alt]="product.title" class="product__img" />
   <h2 class="mb-2 text-md text-center">{{ product.title }}</h2>
   <p>
     Price: <span class="font-bold">{{ product.price | currency : "€" }}</span>
@@ -21,7 +21,7 @@
       <span
         class="font-bold"
         [ngClass]="{
-          'text-red-400': product.rating.rate < 3,
+          'text-red-600': product.rating.rate < 3,
           'text-orange-400':
             product.rating.rate < 4 && product.rating.rate >= 3,
           'text-yellow-400':

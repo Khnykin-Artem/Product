@@ -1,0 +1,7 @@
+.product {
+  @apply py-4 px-6 border rounded flex items-center flex-col mb-2;
+
+  &__img {
+    @apply w-1/6 mb-2;
+  }
+}
