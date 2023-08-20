@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ProductsService } from './services/products.service';
+import { ErrorService } from './services/error.service';
+import { GlobalErrorComponent } from './components/global-error/global-error.component';
 
 @NgModule({
-  declarations: [HeaderComponent, LoaderComponent],
+  declarations: [HeaderComponent, LoaderComponent, GlobalErrorComponent],
   imports: [CommonModule, HttpClientModule],
-  exports: [HeaderComponent, LoaderComponent],
-  providers: [ProductsService],
+  exports: [HeaderComponent, LoaderComponent, GlobalErrorComponent],
+  providers: [ProductsService, ErrorService],
 })
 export class SharedModule {}
