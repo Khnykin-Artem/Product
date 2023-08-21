@@ -1,9 +1,12 @@
 <app-global-error></app-global-error>
 <div class="max-w-2xl container mx-auto pt-5">
   <app-header></app-header>
+  <app-filter-products></app-filter-products>
   <app-loader [loading]="loading"></app-loader>
-  <app-product
-    *ngFor="let product of products$ | async; let i = index"
-    [product]="product"
-  ></app-product>
+  <div *ngIf="products$ | async as products">
+    <app-product
+      *ngFor="let product of products | filterProducts: term; let i = index"
+      [product]="product"
+    ></app-product>
+  </div>
 </div>

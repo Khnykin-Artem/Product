@@ -6,11 +6,22 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ProductsService } from './services/products.service';
 import { ErrorService } from './services/error.service';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
+import { FilterProductsPipe } from './pipes/filter-products.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent, LoaderComponent, GlobalErrorComponent],
+  declarations: [
+    HeaderComponent,
+    LoaderComponent,
+    GlobalErrorComponent,
+    FilterProductsPipe,
+  ],
   imports: [CommonModule, HttpClientModule],
-  exports: [HeaderComponent, LoaderComponent, GlobalErrorComponent],
+  exports: [
+    HeaderComponent,
+    LoaderComponent,
+    GlobalErrorComponent,
+    FilterProductsPipe,
+  ],
   providers: [ProductsService, ErrorService],
 })
 export class SharedModule {}
