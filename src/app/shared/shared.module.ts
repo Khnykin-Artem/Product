@@ -7,6 +7,8 @@ import { ProductsService } from './services/products.service';
 import { ErrorService } from './services/error.service';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { ModalComponent } from './components/modal/modal.component';
+import { FocusDirective } from './directives/focus.directive';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
     LoaderComponent,
     GlobalErrorComponent,
     FilterProductsPipe,
+    ModalComponent,
+    FocusDirective,
   ],
   imports: [CommonModule, HttpClientModule],
   exports: [
@@ -21,6 +25,8 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
     LoaderComponent,
     GlobalErrorComponent,
     FilterProductsPipe,
+    ModalComponent,
+    FocusDirective
   ],
   providers: [ProductsService, ErrorService],
 })

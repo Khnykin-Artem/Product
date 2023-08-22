@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filter-products',
@@ -6,6 +6,11 @@ import { Component, Output } from '@angular/core';
   styleUrls: ['./filter-products.component.scss']
 })
 export class FilterProductsComponent {
-  term: string = '';
-  @Output() private onFormGroupChange = new EventEmitter<any>();
+  productTitle: string = '';
+  @Output() private onChangeProductTitle = new EventEmitter<string>();
+
+  onChangeInput(value: string) {
+    this.productTitle = value;
+    this.onChangeProductTitle.emit(this.productTitle);
+  }
 }

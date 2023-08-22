@@ -3,6 +3,7 @@
     type="text"
     class="filter-products__input"
     placeholder="Filter products..."
-    [(ngModel)]="term"
+    [(ngModel)]="productTitle"
+    (ngModelChange)="onChangeInput($event)"
   />
 </div>

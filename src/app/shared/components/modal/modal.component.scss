@@ -1,0 +1,13 @@
+.modal {
+  &__inner {
+    @apply bg-black/50 fixed top-0 bottom-0 right-0 left-0;
+  }
+
+  &__content {
+    @apply w-[500px] absolute top-16 p-6 bg-white left-1/2 -translate-x-1/2 rounded;
+  }
+
+  &__title {
+    @apply text-center mb-2 text-lg;
+  }
+}

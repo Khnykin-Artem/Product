@@ -1,0 +1,8 @@
+<div class="modal">
+  <div class="modal__inner" (click)="modalService.close()">
+    <div class="modal__content">
+      <h1 class="modal__title">{{ title | titlecase }}</h1>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
