@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalService } from 'src/app/shared/services/modal.service';
-import { ProductsService } from 'src/app/shared/services/products.service';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-create-product',
@@ -24,7 +24,7 @@ export class CreateProductComponent {
   submit() {
     this.productsService
       .create({
-        title: this.title.value as string,
+        title: this.form.value.title as string,
         price: 13.5,
         description: 'lorem ipsum set',
         image: 'https://i.pravatar.cc',

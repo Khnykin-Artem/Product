@@ -9,10 +9,10 @@
 
   <app-loader [loading]="loading"></app-loader>
 
-  <div *ngIf="products$ | async as products">
+  <div *ngIf="productsService.products">
     <app-product
       *ngFor="
-        let product of products | filterProducts : productTitle;
+        let product of productsService.products | filterProducts : productTitle;
         let i = index
       "
       [product]="product"

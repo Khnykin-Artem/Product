@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ModalService {
   isVisible$ = new BehaviorSubject<boolean>(false);
@@ -11,7 +11,9 @@ export class ModalService {
     this.isVisible$.next(true);
   }
 
-  close() {
-    this.isVisible$.next(false);
+  close($event?: MouseEvent) {
+    if (!$event) return this.isVisible$.next(false);
+    const target = $event.target as HTMLElement;
+    if (!target.closest('.modal__content')) return this.isVisible$.next(false);
   }
 }

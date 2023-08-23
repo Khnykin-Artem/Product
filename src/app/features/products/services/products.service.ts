@@ -4,15 +4,17 @@ import {
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
-import { Observable, delay, catchError, throwError, retry } from 'rxjs';
+import { Observable, delay, catchError, throwError, retry, tap } from 'rxjs';
 import { IProduct } from 'src/app/core/models/product';
-import { ErrorService } from './error.service';
+import { ErrorService } from '../../../shared/services/error.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   constructor(private http: HttpClient, private errorService: ErrorService) {}
+
+  products: IProduct[] = [];
 
   getAll(): Observable<IProduct[]> {
     return this.http
@@ -23,7 +25,12 @@ export class ProductsService {
           },
         }),
       })
-      .pipe(delay(200), retry(2), catchError(this.errorHandler.bind(this)));
+      .pipe(
+        delay(200),
+        retry(2),
+        tap((products: IProduct[]) => (this.products = products)),
+        catchError(this.errorHandler.bind(this))
+      );
   }
 
   private errorHandler(error: HttpErrorResponse) {
@@ -32,6 +39,8 @@ export class ProductsService {
   }
 
   create(product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>('https://fakestoreapi.com/products', product);
+    return this.http
+      .post<IProduct>('https://fakestoreapi.com/products', product)
+      .pipe(tap((newProduct: IProduct) => this.products.push(newProduct)));
   }
 }
