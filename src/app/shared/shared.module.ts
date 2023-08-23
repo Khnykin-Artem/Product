@@ -9,6 +9,7 @@ import { FilterProductsPipe } from '../features/products/pipes/filter-products.p
 import { ModalComponent } from './components/modal/modal.component';
 import { FocusDirective } from './directives/focus.directive';
 import { ModalService } from './services/modal.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ModalService } from './services/modal.service';
     FilterProductsPipe,
     ModalComponent,
     FocusDirective,
+    FooterComponent,
   ],
   imports: [CommonModule, HttpClientModule],
   exports: [
@@ -26,7 +28,8 @@ import { ModalService } from './services/modal.service';
     GlobalErrorComponent,
     FilterProductsPipe,
     ModalComponent,
-    FocusDirective
+    FocusDirective,
+    FooterComponent,
   ],
   providers: [ErrorService, ModalService],
 })

@@ -8,6 +8,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { ProductAboutPageComponent } from './pages/product-about-page/product-about-page.component';
 import { ProductManagementPageComponent } from './pages/product-management-page/product-management-page.component';
+import { ProductsRoutingModule } from './products-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { ProductManagementPageComponent } from './pages/product-management-page/
     ProductAboutPageComponent,
     ProductManagementPageComponent,
   ],
-  imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule],
-  exports: [ProductComponent, FilterProductsComponent, CreateProductComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ProductsRoutingModule,
+  ],
 })
 export class ProductsModule {}
