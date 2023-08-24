@@ -1,19 +1,55 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {
+  Injectable,
+  TemplateRef,
+  ComponentFactoryResolver,
+  Injector,
+  Inject,
+} from '@angular/core';
+import { IModalOptions } from '../../core/models/modalOptions';
+import { ModalComponent } from '../components/modal/modal.component';
+import { DOCUMENT } from '@angular/common';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
-  isVisible$ = new BehaviorSubject<boolean>(false);
+  private modalNotifier?: Subject<string>;
 
-  open() {
-    this.isVisible$.next(true);
+  constructor(
+    private resolver: ComponentFactoryResolver,
+    private injector: Injector,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
+
+  openModal(content: TemplateRef<any>, options?: IModalOptions) {
+    const modalComponentFactory =
+      this.resolver.resolveComponentFactory(ModalComponent);
+    const contentViewRef = content.createEmbeddedView(null);
+    const modalComponent = modalComponentFactory.create(this.injector, [
+      contentViewRef.rootNodes,
+    ]);
+
+    modalComponent.instance.size = options?.size;
+    modalComponent.instance.title = options?.title;
+
+    modalComponent.instance.closeEvent.subscribe(() => this.closeModal());
+    modalComponent.instance.submitEvent.subscribe(() => this.submitModal());
+
+    modalComponent.hostView.detectChanges();
+
+    this.document.body.appendChild(modalComponent.location.nativeElement);
+    this.modalNotifier = new Subject();
+
+    return this.modalNotifier?.asObservable();
   }
 
-  close($event?: MouseEvent) {
-    if (!$event) return this.isVisible$.next(false);
-    const target = $event.target as HTMLElement;
-    if (!target.closest('.modal__content')) return this.isVisible$.next(false);
+  closeModal() {
+    this.modalNotifier?.complete();
+  }
+
+  submitModal() {
+    this.modalNotifier?.next('confirm');
+    this.closeModal();
   }
 }

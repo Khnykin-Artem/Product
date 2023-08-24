@@ -43,4 +43,14 @@ export class ProductsService {
       .post<IProduct>('https://fakestoreapi.com/products', product)
       .pipe(tap((newProduct: IProduct) => this.products.push(newProduct)));
   }
+
+  delete(id: number): Observable<IProduct> {
+    return this.http
+      .delete<IProduct>(`https://fakestoreapi.com/products/${id}`)
+      .pipe(
+        tap(() => {
+          this.products.filter((product: IProduct) => product.id !== id);
+        })
+      );
+  }
 }

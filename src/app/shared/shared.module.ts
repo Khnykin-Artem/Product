@@ -10,6 +10,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { FocusDirective } from './directives/focus.directive';
 import { ModalService } from './services/modal.service';
 import { FooterComponent } from './components/footer/footer.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ModalComponent,
     FocusDirective,
     FooterComponent,
+    ButtonComponent,
   ],
   imports: [CommonModule, HttpClientModule],
   exports: [
@@ -30,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ModalComponent,
     FocusDirective,
     FooterComponent,
+    ButtonComponent
   ],
   providers: [ErrorService, ModalService],
 })

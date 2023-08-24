@@ -1,0 +1,11 @@
+<form class="delete-product" [formGroup]="form" (ngSubmit)="submit()">
+  <input
+    type="text"
+    placeholder="Product id"
+    class="delete-product__input"
+    formControlName="id"
+    appFocus
+  />
+  <p class="delete-product__error">This field is required</p>
+  <button class="delete-product__button" type="submit">Delete</button>
+</form>

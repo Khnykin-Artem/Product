@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../../../core/models/product';
 import { ProductsService } from '../../../../features/products/services/products.service';
 import { Observable } from 'rxjs';
-import { ModalService } from '../../../../shared/services/modal.service';
 
 @Component({
   selector: 'app-product-list-page',
@@ -16,7 +15,6 @@ export class ProductListPageComponent implements OnInit {
 
   constructor(
     public productsService: ProductsService,
-    public modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +23,5 @@ export class ProductListPageComponent implements OnInit {
 
   getProductTitle($event: string) {
     this.productTitle = $event;
-    console.log(this.productTitle);
   }
 }

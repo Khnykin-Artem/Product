@@ -1,8 +1,12 @@
 <div class="modal">
-  <div class="modal__inner" (click)="modalService.close($event)">
-    <div class="modal__content">
+  <div class="modal__body">
+    <div class="modal__header">
       <h1 class="modal__title">{{ title | titlecase }}</h1>
+    </div>
+    <div class="modal__content">
       <ng-content></ng-content>
     </div>
   </div>
+  <div class="modal__backdrop" (click)="close()"></div>
 </div>
+

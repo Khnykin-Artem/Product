@@ -1,1 +1,46 @@
-<p>product-management-page works!</p>
+<div class="product-management-page">
+  <div class="page container">
+    <app-filter-products
+      (onChangeProductTitle)="getProductTitle($event)"
+    ></app-filter-products>
+
+    <app-loader [loading]="loading"></app-loader>
+
+    <app-button
+      background="green"
+      [onClick]="
+        this.modalService.openModal.bind(this.modalService, createProduct, {
+          title: 'Create product'
+        })
+      "
+      >Create product</app-button
+    >
+    <app-button
+      background="red"
+      [onClick]="
+        this.modalService.openModal.bind(this.modalService, deleteProduct, {
+          title: 'Delete product'
+        })
+      "
+      >Delete product</app-button
+    >
+    <ng-container *ngIf="productsService.products">
+      <app-product
+        *ngFor="
+          let product of productsService.products
+            | filterProducts : productTitle;
+          let i = index
+        "
+        [product]="product"
+      ></app-product>
+    </ng-container>
+
+    <ng-template #createProduct>
+      <app-create-product></app-create-product>
+    </ng-template>
+
+    <ng-template #deleteProduct>
+      <app-delete-product></app-delete-product>
+    </ng-template>
+  </div>
+</div>

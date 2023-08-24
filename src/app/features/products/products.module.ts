@@ -9,6 +9,7 @@ import { ProductListPageComponent } from './pages/product-list-page/product-list
 import { ProductAboutPageComponent } from './pages/product-about-page/product-about-page.component';
 import { ProductManagementPageComponent } from './pages/product-management-page/product-management-page.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { DeleteProductComponent } from './components//delete-product/delete-product.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProductsRoutingModule } from './products-routing.module';
     ProductListPageComponent,
     ProductAboutPageComponent,
     ProductManagementPageComponent,
+    DeleteProductComponent,
   ],
   imports: [
     CommonModule,

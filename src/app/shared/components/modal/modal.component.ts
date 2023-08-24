@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 
 @Component({
@@ -7,7 +7,21 @@ import { ModalService } from '../../services/modal.service';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
-  @Input() title: string;
+  @Input() title?: string;
+  @Input() size?: string;
 
-  constructor(public modalService: ModalService) {}
+  @Output() closeEvent = new EventEmitter();
+  @Output() submitEvent = new EventEmitter();
+
+  constructor(private elementRef: ElementRef) {}
+
+  close(): void {
+    this.elementRef.nativeElement.remove();
+    this.closeEvent.emit();
+  }
+
+  submit(): void {
+    this.elementRef.nativeElement.remove();
+    this.submitEvent.emit();
+  }
 }
