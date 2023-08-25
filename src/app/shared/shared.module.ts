@@ -32,7 +32,8 @@ import { ButtonComponent } from './components/button/button.component';
     ModalComponent,
     FocusDirective,
     FooterComponent,
-    ButtonComponent
+    ButtonComponent,
+    FocusDirective
   ],
   providers: [ErrorService, ModalService],
 })

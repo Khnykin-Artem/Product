@@ -1,29 +1,33 @@
 <div class="product-management-page">
-  <div class="page container">
+  <div class="container">
     <app-filter-products
       (onChangeProductTitle)="getProductTitle($event)"
     ></app-filter-products>
 
+    <div class="product-management-page__buttons-management">
+      <app-button
+        background="green"
+        [onClick]="
+          this.modalService.openModal.bind(this.modalService, createProduct, {
+            title: 'Create product'
+          })
+        "
+        >Create product</app-button
+      >
+
+      <app-button
+        background="red"
+        [onClick]="
+          this.modalService.openModal.bind(this.modalService, deleteProduct, {
+            title: 'Delete product'
+          })
+        "
+        >Delete product</app-button
+      >
+    </div>
+
     <app-loader [loading]="loading"></app-loader>
 
-    <app-button
-      background="green"
-      [onClick]="
-        this.modalService.openModal.bind(this.modalService, createProduct, {
-          title: 'Create product'
-        })
-      "
-      >Create product</app-button
-    >
-    <app-button
-      background="red"
-      [onClick]="
-        this.modalService.openModal.bind(this.modalService, deleteProduct, {
-          title: 'Delete product'
-        })
-      "
-      >Delete product</app-button
-    >
     <ng-container *ngIf="productsService.products">
       <app-product
         *ngFor="

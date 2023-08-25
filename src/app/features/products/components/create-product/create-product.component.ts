@@ -24,7 +24,6 @@ export class CreateProductComponent {
   submit() {
     this.productsService
       .create({
-        id: this.generateId(),
         title: this.form.value.title as string,
         price: 13.5,
         description: 'lorem ipsum set',
@@ -36,18 +35,11 @@ export class CreateProductComponent {
         },
       })
       .subscribe(() => {
-        this.modalService.submitModal();
+        this.modalService.confirmModal();
       });
   }
 
   get title() {
     return this.form.controls.title as FormControl;
-  }
-
-  generateId(): number {
-    return (
-      this.productsService.products[this.productsService.products.length - 1]
-        .id + 1
-    );
   }
 }

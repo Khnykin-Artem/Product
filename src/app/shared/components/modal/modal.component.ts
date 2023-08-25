@@ -1,5 +1,4 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -11,7 +10,7 @@ export class ModalComponent {
   @Input() size?: string;
 
   @Output() closeEvent = new EventEmitter();
-  @Output() submitEvent = new EventEmitter();
+  @Output() confirmEvent = new EventEmitter();
 
   constructor(private elementRef: ElementRef) {}
 
@@ -20,8 +19,8 @@ export class ModalComponent {
     this.closeEvent.emit();
   }
 
-  submit(): void {
+  confirm(): void {
     this.elementRef.nativeElement.remove();
-    this.submitEvent.emit();
+    this.confirmEvent.emit();
   }
 }

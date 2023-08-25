@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-delete-product',
@@ -12,7 +13,14 @@ export class DeleteProductComponent {
     id: new FormControl<number>(0, [Validators.required]),
   });
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService, private modalService: ModalService) {}
 
-  submit() {}
+  submit() {
+    this.productsService.delete(this.form.value.id)
+    .subscribe(() => this.modalService.confirmModal());
+  }
+
+  get id() {
+    return this.form.controls.id as FormControl;
+  }
 }

@@ -34,7 +34,7 @@ export class ModalService {
     modalComponent.instance.title = options?.title;
 
     modalComponent.instance.closeEvent.subscribe(() => this.closeModal());
-    modalComponent.instance.submitEvent.subscribe(() => this.submitModal());
+    modalComponent.instance.confirmEvent.subscribe(() => this.confirmModal());
 
     modalComponent.hostView.detectChanges();
 
@@ -48,7 +48,7 @@ export class ModalService {
     this.modalNotifier?.complete();
   }
 
-  submitModal() {
+  confirmModal() {
     this.modalNotifier?.next('confirm');
     this.closeModal();
   }

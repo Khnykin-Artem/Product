@@ -6,6 +6,6 @@
     formControlName="id"
     appFocus
   />
-  <p class="delete-product__error">This field is required</p>
+  <p class="delete-product__error" *ngIf="id.errors?.required && id.touched">This field is required</p>
   <button class="delete-product__button" type="submit">Delete</button>
 </form>
