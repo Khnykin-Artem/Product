@@ -32,6 +32,7 @@ export class ModalService {
 
     modalComponent.instance.size = options?.size;
     modalComponent.instance.title = options?.title;
+    modalComponent.instance.confirmText = options?.confirmText;
 
     modalComponent.instance.closeEvent.subscribe(() => this.closeModal());
     modalComponent.instance.confirmEvent.subscribe(() => this.confirmModal());

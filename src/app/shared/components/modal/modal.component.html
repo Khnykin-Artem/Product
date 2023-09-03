@@ -2,11 +2,16 @@
   <div class="modal__body">
     <div class="modal__header">
       <h1 class="modal__title">{{ title | titlecase }}</h1>
+      <span class="modal__close" (click)="close()">&times;</span>
     </div>
     <div class="modal__content">
       <ng-content></ng-content>
     </div>
+    <div class="modal__footer">
+      <button class="modal__confirm" (click)="confirm()">
+        {{ confirmText }}
+      </button>
+    </div>
   </div>
   <div class="modal__backdrop" (click)="close()"></div>
 </div>
-

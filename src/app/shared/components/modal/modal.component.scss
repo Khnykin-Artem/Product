@@ -10,4 +10,16 @@
   &__title {
     @apply text-center mb-2 text-lg;
   }
+
+  &__header {
+    @apply flex justify-between;
+  }
+
+  &__close {
+    @apply cursor-pointer;
+  }
+
+  &__confirm {
+    @apply py-2 px-4 bg-blue-600 text-white rounded;
+  }
 }

@@ -5,3 +5,19 @@
 .container {
   @apply mx-auto max-w-[700px];
 }
+
+.button {
+  @apply block py-2 px-8 rounded text-white text-xl;
+}
+
+.button_red {
+  @apply bg-red-600;
+}
+
+.button_blue {
+  @apply bg-blue-600;
+}
+
+.button_green {
+  @apply bg-green-600;
+}

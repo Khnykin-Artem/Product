@@ -5,25 +5,19 @@
     ></app-filter-products>
 
     <div class="product-management-page__buttons-management">
-      <app-button
-        background="green"
-        [onClick]="
-          this.modalService.openModal.bind(this.modalService, createProduct, {
-            title: 'Create product'
-          })
-        "
-        >Create product</app-button
+      <button
+        class="button button_green"
+        (click)="openCreateProductModal(createProduct)"
       >
+        Create product
+      </button>
 
-      <app-button
-        background="red"
-        [onClick]="
-          this.modalService.openModal.bind(this.modalService, deleteProduct, {
-            title: 'Delete product'
-          })
-        "
-        >Delete product</app-button
+      <button
+        class="button button_red"
+        (click)="openDeleteProductModal(deleteProduct)"
       >
+        Delete product
+      </button>
     </div>
 
     <app-loader [loading]="loading"></app-loader>

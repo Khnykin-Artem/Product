@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { IProduct } from '../../../../core/models/product';
 import { ProductsService } from '../../../../features/products/services/products.service';
 import { Observable } from 'rxjs';
@@ -25,5 +25,21 @@ export class ProductManagementPageComponent implements OnInit {
 
   getProductTitle($event: string) {
     this.productTitle = $event;
+  }
+
+  openCreateProductModal(modalTemplate: TemplateRef<any>) {
+    this.modalService.openModal(modalTemplate, {
+      title: 'Create product',
+      confirmText: 'Create',
+    })
+    .subscribe((action) => console.log(action));
+  }
+
+  openDeleteProductModal(modalTemplate: TemplateRef<any>) {
+    this.modalService.openModal(modalTemplate, {
+      title: 'Delete product',
+      confirmText: 'Delete',
+    })
+    .subscribe((action) => console.log(action));
   }
 }

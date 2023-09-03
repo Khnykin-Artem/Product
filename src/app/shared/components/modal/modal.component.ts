@@ -8,6 +8,7 @@ import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/cor
 export class ModalComponent {
   @Input() title?: string;
   @Input() size?: string;
+  @Input() confirmText?: string;
 
   @Output() closeEvent = new EventEmitter();
   @Output() confirmEvent = new EventEmitter();
